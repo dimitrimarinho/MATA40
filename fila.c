@@ -26,3 +26,7 @@ void FFVazia(TipoFila *Fila)
   Fila->Tras = Fila->Frente;
   Fila->Frente->Prox = NULL;
 } 
+
+int Vazia(TipoFila Fila)
+{ return (Fila.Frente == Fila.Tras); } 
+
