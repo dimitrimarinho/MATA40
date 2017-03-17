@@ -36,3 +36,12 @@ void Enfileira(TipoItem x, TipoFila *Fila)
   Fila->Tras->Item = x;
   Fila->Tras->Prox = NULL;
 } 
+
+void Desenfileira(TipoFila *Fila, TipoItem *Item)
+{ TipoApontador q;
+  if (Vazia(*Fila)) { printf("Erro fila esta vazia\n"); return; }
+  q = Fila->Frente;
+  Fila->Frente = Fila->Frente->Prox;
+  *Item = Fila->Frente->Item;
+  free(q);
+} 
