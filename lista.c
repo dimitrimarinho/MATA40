@@ -30,3 +30,7 @@ void FLVazia(TipoLista *Lista)
   Lista -> Ultimo = Lista -> Primeiro;
   Lista -> Primeiro -> Prox = NULL;
 }
+
+int Vazia(TipoLista Lista)
+{ return (Lista.Primeiro == Lista.Ultimo);
+}
