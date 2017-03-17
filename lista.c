@@ -34,3 +34,11 @@ void FLVazia(TipoLista *Lista)
 int Vazia(TipoLista Lista)
 { return (Lista.Primeiro == Lista.Ultimo);
 }
+
+void Insere(TipoItem x, TipoLista *Lista)
+{ Lista -> Ultimo -> Prox = (TipoApontador) malloc(sizeof(TipoCelula));
+  Lista -> Ultimo = Lista -> Ultimo -> Prox;
+  Lista -> Ultimo -> Item = x;
+  Lista -> Ultimo -> Prox = NULL;
+}
+
