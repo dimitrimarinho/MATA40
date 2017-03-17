@@ -42,3 +42,16 @@ void Insere(TipoItem x, TipoLista *Lista)
   Lista -> Ultimo -> Prox = NULL;
 }
 
+void Retira(TipoApontador p, TipoLista *Lista, TipoItem *Item)
+{ /*  ---   Obs.: o item a ser retirado e  o seguinte ao apontado por  p --- */
+  TipoApontador q;
+  if (Vazia(*Lista) || p == NULL || p -> Prox == NULL) 
+  { printf(" Erro   Lista vazia ou posi  c   a o n  a o existe\n");
+    return;
+  }
+  q = p -> Prox;
+  *Item = q -> Item;
+  p -> Prox = q -> Prox;
+  if (p -> Prox == NULL) Lista -> Ultimo = p;
+  free(q);
+}
