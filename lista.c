@@ -55,3 +55,12 @@ void Retira(TipoApontador p, TipoLista *Lista, TipoItem *Item)
   if (p -> Prox == NULL) Lista -> Ultimo = p;
   free(q);
 }
+
+void Imprime(TipoLista Lista)
+{ TipoApontador Aux;
+  Aux = Lista.Primeiro -> Prox;
+  while (Aux != NULL) 
+    { printf("%d\n", Aux -> Item.Chave);
+      Aux = Aux -> Prox;
+    }
+}
