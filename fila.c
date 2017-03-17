@@ -45,3 +45,13 @@ void Desenfileira(TipoFila *Fila, TipoItem *Item)
   *Item = Fila->Frente->Item;
   free(q);
 } 
+
+
+void Imprime(TipoFila Fila)
+{ TipoApontador Aux;
+  Aux = Fila.Frente->Prox;
+  while (Aux != NULL) 
+    { printf("%d\n", Aux->Item.Chave);
+      Aux = Aux->Prox;
+    }
+}
