@@ -30,3 +30,9 @@ void FFVazia(TipoFila *Fila)
 int Vazia(TipoFila Fila)
 { return (Fila.Frente == Fila.Tras); } 
 
+void Enfileira(TipoItem x, TipoFila *Fila)
+{ Fila->Tras->Prox = (TipoApontador) malloc(sizeof(TipoCelula));
+  Fila->Tras = Fila->Tras->Prox;
+  Fila->Tras->Item = x;
+  Fila->Tras->Prox = NULL;
+} 
