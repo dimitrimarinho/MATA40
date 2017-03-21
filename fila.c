@@ -1,10 +1,3 @@
-#include <stdlib.h>
-#include <sys/time.h>
-#include <stdio.h>
-#define MAX 10
-
-
-
 void FFVazia(TipoFila *Fila)
 { Fila->Frente = (TipoApontador) malloc(sizeof(TipoCelula));
   Fila->Tras = Fila->Frente;
