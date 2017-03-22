@@ -56,4 +56,20 @@ void inOrder (ARV a){
  	printf(" %d ", a->chave);
  	inOrder(a->dir);
  }
+
+	//Função para percorrer a árvore respeitando o critério PRÉ ORDEM
+void preOrder (ARV a){
+ if (!Vazia(a)){
+	printf(" %d ", a->chave);
+ 	preOrder(a->esq);
+ 	preOrder(a->dir);
+ }
+	//Função para percorrer a árvore respeitando o critério POS ORDEM
+void posOrder (ARV a){
+ if (!Vazia(a)){
+ 	posOrder(a->esq);
+ 	posOrder(a->dir);
+	printf(" %d ", a->chave);
+ }
+	
 } 
