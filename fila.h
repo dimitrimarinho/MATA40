@@ -4,7 +4,6 @@ typedef int TipoChave;
 
 typedef struct TipoItem {
   TipoChave Chave;
-  /* outros componentes */
 } TipoItem;
 
 typedef struct TipoCelula {
