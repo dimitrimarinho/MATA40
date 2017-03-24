@@ -1,3 +1,8 @@
+#include <sys/time.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include "pilha.h"
+
 void FPVazia(TipoPilha *Pilha){
   Pilha->Topo = (TipoApontador) malloc(sizeof(TipoCelula));
   Pilha->Fundo = Pilha->Topo;
@@ -20,11 +25,15 @@ void Empilha(TipoItem x, TipoPilha *Pilha){
 
 void Desempilha(TipoPilha *Pilha, TipoItem *Item){
   TipoApontador q;
-  if (Vazia(*Pilha)) { printf("Erro: lista vazia\n"); return; }
+  if (Vazia(*Pilha)) { 
+	  printf("Erro: lista vazia\n"); 
+	  return;
+	}
   q = Pilha->Topo;
   Pilha->Topo = q->Prox;
   *Item = q->Prox->Item;
-  free(q);  Pilha->Tamanho--;
+  free(q);  
+  Pilha->Tamanho--;
 } 
 
 int Tamanho(TipoPilha Pilha){
