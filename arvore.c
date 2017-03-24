@@ -48,7 +48,45 @@ ARV Pesquisa (ARV a , int b){
 				return Pesquisa (a->esq, b);
 } 
 
-
+//Funcao remover elemento da arvore
+void Antecessor(ARV raiz, ARV r){
+	
+	if(r->dir != NULL){
+		Antecessor(raiz,r->dir);
+		return;
+	}
+	raiz->chave = r->chave;
+	raiz = r;
+	r=r->esq;
+	free(raiz);
+}
+void Remove (ARV raiz, int x ){
+	ARV aux;
+		if (raiz==NULL)
+			printf("Erro : Elemento não esta na arvore!\n");
+			return;
+		if(raiz->chave < x){
+			Remove(raiz->esq,x);
+			return;
+		}
+		if(raiz->chave > x){
+			Remove(raiz->dir,x);
+			return;
+		}
+		if (raiz->dir == NULL){
+			aux=raiz;
+			raiz = raiz->esq;
+			free(aux);
+			return;
+		}
+		if(raiz->esq != NULL){
+			Antecessor(raiz->esq,raiz );
+			return;
+			aux = raiz;
+			raiz= raiz->dir;
+			free(aux);
+		}	
+	}
 //Função para percorrer a árvore respeitando o critério EM ORDEM
 void inOrder (ARV a){
  if (!Vazia(a)){
