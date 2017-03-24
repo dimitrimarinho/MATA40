@@ -1,6 +1,7 @@
 #include <sys/time.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "lista.h"
 
 void FLVazia(TipoLista *Lista){ 
   Lista -> Primeiro = (TipoApontador) malloc(sizeof(TipoCelula));
@@ -22,7 +23,7 @@ void Insere(TipoItem x, TipoLista *Lista){
 void Retira(TipoApontador p, TipoLista *Lista, TipoItem *Item){ /*---Obs.: o item a ser retirado e o seguinte ao apontado por  p --- */
   TipoApontador q;
   if (Vazia(*Lista) || p == NULL || p -> Prox == NULL){ 
-    printf(" Erro   Lista vazia ou posi  c   a o n  a o existe\n");
+    printf(" Erro:   Lista vazia ou posicao nao existe\n");
     return;
   }
   q = p -> Prox;
