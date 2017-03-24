@@ -1,6 +1,7 @@
 #include <sys/time.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "fila.h"
 
 void FFVazia(TipoFila *Fila)
 { 
@@ -25,7 +26,7 @@ void Desenfileira(TipoFila *Fila, TipoItem *Item){
   if (Vazia(*Fila)) { 
     printf("Erro fila esta vazia\n"); 
     return; 
-}
+  }
   q = Fila->Frente;
   Fila->Frente = Fila->Frente->Prox;
   *Item = Fila->Frente->Item;
@@ -35,8 +36,8 @@ void Desenfileira(TipoFila *Fila, TipoItem *Item){
 void Imprime(TipoFila Fila){ 
   TipoApontador Aux;
   Aux = Fila.Frente->Prox;
-  while (Aux != NULL){ 
-    printf("%d\n", Aux->Item.Chave);
-    Aux = Aux->Prox;
-  }
+    while (Aux != NULL){ 
+      printf("%d\n", Aux->Item.Chave);
+      Aux = Aux->Prox;
+    }
 }
