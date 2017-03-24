@@ -2,7 +2,6 @@ typedef int TipoChave;
 
 typedef struct {
   int Chave;
-  /* outros componentes */
 } TipoItem;
 
 typedef struct TipoCelula *TipoApontador;
