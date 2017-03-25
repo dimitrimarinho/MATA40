@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-
+#include "arvore.h"
 int Vazia (ARV a){
 	return (a == NULL);
 } 
@@ -18,7 +18,7 @@ ARV insere (ARV a, int b) {
  		nova->chave = b;
  		nova->esq = NULL;
  		nova->dir = NULL;
- 		printf("Insercao do numero %d na AB realizada!", b);
+ 		printf("Insercao do numero %d na AB realizada!\n", b);
  		return nova;
  } else{ 
  		if ( b > a->chave )
@@ -94,7 +94,7 @@ void inOrder (ARV a){
  	printf(" %d ", a->chave);
  	inOrder(a->dir);
  }
-
+}
 	//Função para percorrer a árvore respeitando o critério PRÉ ORDEM
 void preOrder (ARV a){
  if (!Vazia(a)){
@@ -102,12 +102,13 @@ void preOrder (ARV a){
  	preOrder(a->esq);
  	preOrder(a->dir);
  }
+}
 	//Função para percorrer a árvore respeitando o critério POS ORDEM
 void posOrder (ARV a){
- if (!Vazia(a)){
- 	posOrder(a->esq);
- 	posOrder(a->dir);
-	printf(" %d ", a->chave);
- }
-	
-} 
+	 if (!Vazia(a)){
+		posOrder(a->esq);
+		posOrder(a->dir);
+		printf(" %d ", a->chave);
+	 }
+}
+
