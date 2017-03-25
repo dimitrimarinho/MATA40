@@ -5,6 +5,7 @@
 #include "fila.c"
 #include "pilha.c"
 #include "lista.c"
+#include "arvore.c"
 
 int main(int argc, char **argv)
 { 
@@ -16,6 +17,7 @@ int main(int argc, char **argv)
 	FilaTipoItem Fitem;
 	ListaTipoItem Litem;
 	
+	NO a;
 	ListaTipoApontador Lp=NULL;
    
    
@@ -158,12 +160,44 @@ int main(int argc, char **argv)
 						printf("Em manutencao");
 					break;
 				}
-    
-   
 	break;
-   }
-	
+   
+	case 4:
+		opc=0;
+			printf("ARVORE BINARIA\n\n");
+			printf("1-Iniciar uma arvore \n");
+			printf("2-Pesquisar elemento na arvore\n ");
+			printf("3-Inserir elemento na arvore\n ");
+			printf("4-Remover elemento da arvore: \n");
+			printf("5-Imprimir arvore: \n");
+		switch (opc){
+			case 1:	
+				Inicializa(&a);
+			break;
+			case 2:
+				scanf("%d",&chave);
+				Pesquisa(&a,chave);
+			break;
+			case 3:
+				scanf("%d",&chave);
+				insere(&a,chave);
+			break;
+			case 4:
+				scanf("%d",&chave);
+				Remove(&a,chave);
+				
+			case 5:
+				printf("Em Ordem: \n");
+				inOrder(&a);
+				printf("Pre Ordem: \n");
+				preOrder(&a);
+				printf("Pos Ordem: \n");
+				posOrder(&a);
+			break;
+		}
+		break;
 
+}
     
     /*
     item.Chave = 88;
@@ -182,3 +216,4 @@ int main(int argc, char **argv)
   //  Imprime(fila);
 	return 0;
 }
+
