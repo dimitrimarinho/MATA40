@@ -1,12 +1,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "arvore.h"
+
 int Vazia (ARV a){
 	return (a == NULL);
 } 
 
 void Inicializa(ARV a){ 
 	a = NULL;
+	printf("Arvore Inicializada\n");
 }
 
 // Função para inserir um novo elemento 'b' na arvore 'a'
@@ -18,31 +20,28 @@ ARV insere (ARV a, int b) {
  		nova->chave = b;
  		nova->esq = NULL;
  		nova->dir = NULL;
- 		printf("Insercao do numero %d na AB realizada!\n", b);
+ 		printf("Insercao do numero %d na AB realizada!\n\n", b);
  		return nova;
- } else{ 
- 		if ( b > a->chave )
- 			a->dir = insere(a->dir, b);
-		else
-			if ( b < a->chave )
- 				a->esq = insere(a->esq, b);
- 			else printf("Erro : Registro ja existe na arvore\n");
- 		
-		return a;
- }
+	} else{ 
+			if ( b > a->chave )
+				a->dir = insere(a->dir, b);
+			else if ( b < a->chave )
+					a->esq = insere(a->esq, b);
+			else printf("Erro : Registro ja existe na arvore\n");
+			
+			return a;
+		}
 } 
 
 
 // Função para procurar um elemento numa arvore
 ARV Pesquisa (ARV a , int b){
 	if (Vazia(a)){
-		printf("Erro: Registro nao esta presente na arvore\n");
+		printf("Erro: Registro nao esta presente na arvore!!\n");
 		return NULL;
-	}else
- 		if ( a->chave == b )
+	}else if ( a->chave == b )
 		 	return a;
- 		else
- 			if ( b > a->chave )
+ 		else if ( b > a->chave )
  				return Pesquisa (a->dir, b);
  			else 
 				return Pesquisa (a->esq, b);
@@ -62,24 +61,25 @@ void Antecessor(ARV raiz, ARV r){
 }
 void Remove (ARV raiz, int x ){
 	ARV aux;
-		if (raiz==NULL)
+		if (raiz==NULL){
 			printf("Erro : Elemento não esta na arvore!\n");
-			return;
-		if(raiz->chave < x){
+			return ;
+		}
+		else if(raiz->chave < x){
 			Remove(raiz->esq,x);
 			return;
 		}
-		if(raiz->chave > x){
+		else if(raiz->chave > x){
 			Remove(raiz->dir,x);
 			return;
 		}
-		if (raiz->dir == NULL){
+		else if (raiz->dir == NULL){
 			aux=raiz;
 			raiz = raiz->esq;
 			free(aux);
 			return;
 		}
-		if(raiz->esq != NULL){
+		else if(raiz->esq != NULL){
 			Antecessor(raiz->esq,raiz );
 			return;
 			aux = raiz;
