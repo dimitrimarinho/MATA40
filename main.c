@@ -17,10 +17,8 @@ int main(int argc, char **argv)
 	FilaTipoItem Fitem;
 	ListaTipoItem Litem;
 	
-	NO a;
+	NO arv;
 	ListaTipoApontador Lp=NULL;
-   
-   
    
     int chave,opc=0;
     menu:
@@ -28,7 +26,7 @@ int main(int argc, char **argv)
 		printf("[1] Lista\n" );
 		printf("[2] Pilha\n" );
 		printf("[3] Fila\n" );
-		printf("[4] Arvore de Busca\n" );
+		printf("[4] Arvore de Binaria de Busca\n" );
 		printf("[10] Documentacao\n" );
 	  
     scanf("%d",&opc);
@@ -50,9 +48,8 @@ int main(int argc, char **argv)
 			case 0:
 				goto menu;
 				break;
-		
-			
-			FLVazia(&lista); // incializando a lista vazia
+				
+			//FLVazia(&lista); // incializando a lista vazia
 			
 			switch (opc){
 			case 1:
@@ -153,16 +150,13 @@ int main(int argc, char **argv)
 					break;
 				
 					case 4:
-						printf("Em manutencao");
-					break;
-					
-					case 10:
-						printf("Em manutencao");
+						FVazia(fila);
 					break;
 				}
 	break;
    
 	case 4:
+	
 		opc=0;
 			printf("ARVORE BINARIA\n\n");
 			printf("1-Iniciar uma arvore \n");
@@ -170,33 +164,38 @@ int main(int argc, char **argv)
 			printf("3-Inserir elemento na arvore\n ");
 			printf("4-Remover elemento da arvore: \n");
 			printf("5-Imprimir arvore: \n");
+			scanf("%d",&opc);
+	
 		switch (opc){
 			case 1:	
-				Inicializa(&a);
+				Inicializa(&arv);
 			break;
 			case 2:
 				scanf("%d",&chave);
-				Pesquisa(&a,chave);
+				Pesquisa(&arv,chave);
 			break;
 			case 3:
 				scanf("%d",&chave);
-				insere(&a,chave);
+				insere(&arv,chave);
 			break;
 			case 4:
 				scanf("%d",&chave);
-				Remove(&a,chave);
+				Remove(&arv,chave);
 				
 			case 5:
 				printf("Em Ordem: \n");
-				inOrder(&a);
+				inOrder(&arv);
 				printf("Pre Ordem: \n");
-				preOrder(&a);
+				preOrder(&arv);
 				printf("Pos Ordem: \n");
-				posOrder(&a);
+				posOrder(&arv);
 			break;
 		}
 		break;
-
+		
+		case 10://documentação
+		break;
+		
 }
     
     /*
