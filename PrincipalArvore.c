@@ -41,7 +41,7 @@ void insere (ARV *a, int b) {
 int Pesquisa (ARV a , int b){
 	if (Vazia(a)){
 		printf("Erro: Registro nao esta presente na arvore!!\n");
-		return NULL;
+		return 0;
 	}else if ( a->chave == b ){
 			printf("Está na arvore");
 		 	return 1;
@@ -124,8 +124,7 @@ void posOrder (ARV a){
 	}
 }
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv){
 	ARV arv;
 	int chave;
 	
@@ -165,7 +164,7 @@ int main(int argc, char **argv)
 				printf("\nPos Ordem: ");
 				posOrder(arv);
 			break;
-		}
+			}
 	}
-
+	return 0;
 }
