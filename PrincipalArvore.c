@@ -38,18 +38,18 @@ void insere (ARV *a, int b) {
 } 
 
 // Função para procurar um elemento numa arvore
-int Pesquisa (ARV a , int b){
-	if (Vazia(a)){
+void Pesquisa (ARV a , int b){
+	if (a==NULL){
 		printf("Erro: Registro nao esta presente na arvore!!\n");
-		return 0;
+		return ;
 	}else if ( a->chave == b ){
 			printf("Está na arvore");
-		 	return 1;
- 		}else if ( b > a->chave )
+		 	return ;
+ 		}else if ( b > a->chave ){
  				return Pesquisa (a->dir, b);
- 			else 
+ 			}else {
 				return Pesquisa (a->esq, b);
-				
+			}	
 } 
 
 //Funcao remover elemento da arvore
@@ -66,31 +66,30 @@ void Antecessor(ARV raiz, ARV r){
 }
 
 void Remove (ARV raiz, int x ){
-	ARV aux;
+	ARV aux = raiz;
 		if (raiz==NULL){
 			printf("Erro : Elemento não esta na arvore!\n");
 			return ;
 		}
-		else if(raiz->chave < x){
-			Remove(raiz->esq,x);
+		else if( x < aux->chave ){
+			Remove(aux->esq,x);
 			return;
 		}
-		else if(raiz->chave > x){
-			Remove(raiz->dir,x);
+		else if( x > aux->chave){
+			Remove(aux->dir,x);
 			return;
 		}
-		else if (raiz->dir == NULL){
-			aux=raiz;
-			raiz = raiz->esq;
-			free(aux);
+		else if ( x == aux->chave ){
+				if((!aux->esq)&&(!aux->dir))		
+				free(aux);
 			return;
 		}
 		else if(raiz->esq != NULL){
 			Antecessor(raiz->esq,raiz );
-			return;
 			aux = raiz;
 			raiz= raiz->dir;
 			free(aux);
+			return;
 		}	
 	}
 //Função para percorrer a árvore respeitando o critério EM ORDEM
@@ -125,7 +124,7 @@ void posOrder (ARV a){
 }
 
 int main(int argc, char **argv){
-	ARV arv;
+	ARV arv=NULL;
 	int chave;
 	
 	int opc = 6;
@@ -145,7 +144,7 @@ int main(int argc, char **argv){
 			break;
 			case 2:			
 				scanf("%d",&chave);
-				Pesquisa(arv, arv->chave);
+				Pesquisa(arv,chave);
 			break;
 			case 3:
 				scanf("%d",&chave);
