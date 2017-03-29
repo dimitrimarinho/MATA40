@@ -17,6 +17,16 @@ void Inicializa(ARV *a){
 	printf("Arvore Inicializada\n");
 }
 
+// Criar arvore vazia
+void CriarArvore(ARV *a){
+	ARV nova;
+		nova = (ARV) malloc (sizeof(ARV));
+ 		nova->esq = NULL;
+ 		nova->dir = NULL;
+ 		(*a) = nova;
+ 	printf("Arvore criada!\n\n");
+}
+
 // Função para inserir um novo elemento 'b' na arvore 'a'
 void insere (ARV *a, int b) { 
 	ARV nova;
@@ -65,61 +75,84 @@ void Antecessor(ARV raiz, ARV r){
 	free(raiz);
 }
 
-void Remove (ARV raiz, int x ){
+ARV Remove (ARV raiz, int x ){
 	ARV aux = raiz;
 		if (raiz==NULL){
 			printf("Erro : Elemento não esta na arvore!\n");
-			return ;
+			return NULL;
 		}
-		else if( x < aux->chave ){
+		else if( aux->chave > x ){
 			Remove(aux->esq,x);
-			return;
+			return NULL;
 		}
-		else if( x > aux->chave){
+		else if( aux->chave < x){
 			Remove(aux->dir,x);
-			return;
+			return NULL;
 		}
-		else if ( x == aux->chave ){
-				if((!aux->esq)&&(!aux->dir))		
+		//nó sem filho
+		else if ( x == aux->chave ){ 
+				if(aux->esq == NULL && aux->dir==NULL)		
 				free(aux);
-			return;
+				aux=NULL;
+				printf ("OI 1\n");
+			return aux;
 		}
-		else if(raiz->esq != NULL){
-			Antecessor(raiz->esq,raiz );
-			aux = raiz;
-			raiz= raiz->dir;
+		
+		
+		// no só com um filho a esquerda
+		else if (raiz->dir == NULL){
+			aux = aux->esq;
 			free(aux);
-			return;
-		}	
+			printf ("OII 2\n");
+		}
+		// no só com um filho a direita
+		else if (raiz->esq == NULL){
+			aux = aux->dir;
+			free(aux);
+			printf ("OIII 3\n");
+		} else { // no tem os dois filhos
+			aux = raiz->esq;
+			while(aux->dir !=NULL){
+				aux=aux->dir;
+				}
+				raiz->chave = aux->chave;
+				aux->chave = x;
+				raiz->esq = Remove(raiz->esq, x);
+				printf ("OIII 4\n");
+			}
+		
+			return raiz;
+		
 	}
 //Função para percorrer a árvore respeitando o critério EM ORDEM
-void inOrder (ARV a){
-	if (!Vazia(a)){
-		if((a->esq) != NULL)
-			inOrder(a->esq);
-		printf(" %d ", a->chave);
-		if((a->dir) != NULL)
-			inOrder(a->dir);
+void inOrder (ARV raiz){
+	if (!Vazia(raiz)){
+		if((raiz->esq) != NULL){
+			inOrder(raiz->esq);
+			printf(" %d ", raiz->chave);
+		}
+		if((raiz->dir) != NULL)
+			inOrder(raiz->dir);
 	}
 }
 	//Função para percorrer a árvore respeitando o critério PRÉ ORDEM
-void preOrder (ARV a){
-	if (!Vazia(a)){
-		printf(" %d ", a->chave);
-		if((a->esq) != NULL)
-			preOrder(a->esq);
-		if((a->dir) != NULL)
-			preOrder(a->dir);
+void preOrder (ARV raiz){
+	if (!Vazia(raiz)){
+		printf(" %d ", raiz->chave);
+		if((raiz->esq) != NULL)
+			preOrder(raiz->esq);
+		if((raiz->dir) != NULL)
+			preOrder(raiz->dir);
 	}
 }
 	//Função para percorrer a árvore respeitando o critério POS ORDEM
-void posOrder (ARV a){
-	if (!Vazia(a)){
-		if((a->esq) != NULL)
-			posOrder(a->esq);
-		if((a->dir) != NULL)
-			posOrder(a->dir);
-		printf(" %d ", a->chave);
+void posOrder (ARV raiz){
+	if (!Vazia(raiz)){
+		if((raiz->esq) != NULL)
+			posOrder(raiz->esq);
+		if((raiz->dir) != NULL)
+			posOrder(raiz->dir);
+		printf(" %d ", raiz->chave);
 	}
 }
 
