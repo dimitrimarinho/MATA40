@@ -1,0 +1,72 @@
+### FPVazia
+
+#### Nome
+	FPVazia - Esvazia a pilha.
+
+#### Sinopse
+	FPVazia(&pilha);
+
+#### Argumentos
+	A função recebe como argumento o endereço da pilha
+
+
+***
+
+### PVazia
+
+#### Nome
+	PVazia - Verifica se a pilha está ou não vazia.
+
+#### Sinopse
+	PVazia(&pilha);
+
+#### Argumentos
+	A função recebe o endereço da pilha.
+
+#### Retorno
+	A função retorna true caso a pilha esteja vazia e false caso não esteja.
+
+***
+
+### PEmpilha
+
+#### Nome
+	PEmpilha - Insere um elemento na pilha.
+
+#### Sinopse
+	PEmpilha(item, &pilha);
+
+#### Argumentos
+	A função recebe o elemento a ser inserido na pilha e o endereço da pilha.
+
+
+***
+
+### PDesempilha
+
+#### Nome
+	PDesempilha - Remove um item da pilha.
+OBS: numa pilha os elementos só podem ser removidos do topo.
+
+#### Sinopse
+	PDesempilha(&pilha);
+
+#### Argumentos
+	A função recebe o endereço da pilha na qual se deseja realizar a operação.
+
+
+***
+
+### PTamanho
+
+#### Nome
+	PTamanho - Informa o tamanho da pilha.
+
+#### Sinopse
+	PTamanho(&pilha);
+
+#### Argumentos
+	A função recebe o endereço da pilha.
+
+#### Retorno
+    	A função retorna o tamanho da pilha.

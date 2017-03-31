@@ -1,0 +1,70 @@
+FLVazia
+
+Nome
+    FLVazia - Esvazia a lista
+
+Sinopse
+    FLVazia(&lista);
+
+Argumentos
+    A função recebe como argumento o endereço da lista a se esvaziar
+
+
+LVazia
+
+Nome
+    LVazia - Verifica se a lista está vazia.
+
+Sinopse
+    LVazia(&lista);
+Argumentos
+    A função recebe o endereço da lista a qual se deseja verificar se está ou não vazia.
+
+Retorno
+    A função retorna verdadeiro caso a lista esteja vazia e falso caso não esteja.
+
+LInsere
+
+Nome
+    LInsere - insere elementos na última posição de uma lista
+
+Sinopse
+    LInsere(item, &lista);
+
+Argumentos
+    Os argumentos passados para esta função devem ser o item que se deseja inserir na lista e o endereço da lista.
+
+Retorno
+---
+
+LRetira
+
+Nome
+    LRetira - Remove um elemento de uma posição específica da lista
+    OBS: O item a ser removido será o item seguinte ao apontado por p.
+
+Sinopse
+    LRetira(&p, &lista, &item);
+
+Argumentos
+    A função recebe como argumentos
+    1. O endereço da posição anterior ao elemento a ser removido
+    2. O endereço da lista sobre a qual deseja-se realizar a operação
+    3. O endereço do item a ser removido
+
+Retorno
+---
+
+LImprime
+
+Nome
+    LImprime - Imprime todos os elementos de uma lista.
+
+Sinopse
+    LImprime(&lista);
+
+Argumentos
+    A função recebe o endereço da lista a ser impressa.
+
+Retorno
+---

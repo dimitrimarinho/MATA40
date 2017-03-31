@@ -1,0 +1,69 @@
+### FFVazia
+
+#### Nome
+
+    FFVazia - Esvazia a fila.
+
+#### Sinopse
+     FFVazia (&fila);
+
+#### Argumentos
+    A função recebe o endereço da fila a ser esvaziada.
+
+#### Descrição
+Na implementação com ponteiros, a fila possui dois apontadores do TipoFila: Frente e Trás que apontam, como o próprio nome indica, para o primeiro e o último elemento da
+A função FFVazia basicamente iguala o início ao final da fila e faz com que o campo da célula que aponta para o próximo elemento da fila aponte para NULL. Após isso as demais posições serão sobrescritas a medida que forem inseridos novos itens na fila.
+
+### FVazia
+
+#### Nome
+    FVazia - Verifica se a fila está vazia.
+
+#### Sinopse
+     FVazia (&fila);
+
+#### Argumentos
+    A função recebe o endereço da fila que deseja verificar se está ou não vazia.
+
+#### Descrição
+A função retorna verdadeiro caso a lista esteja vazia e falso caso não esteja.
+
+### FEnfileira
+
+#### Nome
+    FEnfileira - Insere um elemento na fila.
+
+#### Sinopse
+     FEnfileira(item, &fila);
+
+#### Argumentos
+    A função recebe o item que se deseja inserir na fila e o endereço da fila.
+
+#### Descrição
+A função insere o elemento na fila e faz com que o final da fila aponte para o item recém inserido. Isso ocorre por conta do formato FIFO (first-in, first-out) da estrutura fila, o item sempre será inserido na última posição da fila.
+
+### FDesenfileira
+
+#### Nome
+    FDesenfileira - Remove itens da fila.
+
+#### Sinopse
+     FDesenfileira(&item, &fila);
+
+#### Argumentos
+    A função recebe o endereço do item a ser removido e o endereço da fila.
+
+#### Descrição
+Se a fila não estiver vazia, faz com que o início da fila aponte para o elemento que outrora fora o segundo elemento. Dentro da estrutura FIFO da fila, a remoção de elementos da fila só ocorre no início.
+
+### FImprime
+
+#### Nome
+    FImprime - Imprime todos os elementos da fila.
+
+#### Sinopse
+
+#### Argumentos
+
+#### Descrição
+A partir do primeiro elemento da fila, imprime todos os seus elementos.
