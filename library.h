@@ -110,3 +110,78 @@ void Imprime(TipoFila Fila){
       Aux = Aux->Prox;
     }
 }
+
+/* LISTA */
+
+typedef int TipoChave;
+
+typedef struct {
+  int Chave;
+  /* outros componentes */
+} TipolItem;
+
+typedef struct LTipoCelula *LTipoApontador;
+
+typedef struct LTipoCelula {
+  TipolItem lItem;
+  LTipoApontador Prox;
+} LTipoCelula;
+
+typedef struct {
+  LTipoApontador Primeiro, Ultimo;
+} TipoLista;
+
+/* ========================================================================= */
+
+void FLVazia(TipoLista *Lista){ 
+  Lista -> Primeiro = (LTipoApontador) malloc(sizeof(LTipoCelula));
+  Lista -> Ultimo = Lista -> Primeiro;
+  Lista -> Primeiro -> Prox = NULL;
+}
+
+int LVazia(TipoLista Lista){ 
+  return (Lista.Primeiro == Lista.Ultimo);
+}
+
+void Insere(TipolItem x, TipoLista *Lista){ 
+  Lista -> Ultimo -> Prox = (LTipoApontador) malloc(sizeof(LTipoCelula));
+  Lista -> Ultimo = Lista -> Ultimo -> Prox;
+  Lista -> Ultimo -> lItem = x;
+  Lista -> Ultimo -> Prox = NULL;
+}
+
+void Retira(LTipoApontador p, TipoLista *Lista, TipolItem *lItem){
+ /*  ---   Obs.: o litem a ser retirado e  o seguinte ao apontado por  p --- */
+  LTipoApontador q;
+  if (LVazia(*Lista) || p == NULL || p -> Prox == NULL) 
+  { printf(" Erro Lista vazia ou posicao nao existe\n");
+    return;
+  }
+  q = p -> Prox;
+  *lItem = q -> lItem;
+  p -> Prox = q -> Prox;
+  if (p -> Prox == NULL) Lista -> Ultimo = p;
+  free(q);
+}
+
+LTipoApontador Busca(TipoLista Lista, int chave){ 
+  LTipoApontador Aux;
+  Aux = Lista.Primeiro -> Prox;
+  while (Aux != NULL) { 
+      if (Aux->lItem.Chave==chave){
+        printf(" Achou: %d\n", Aux->lItem.Chave);
+        return Aux;
+      }  
+      Aux = Aux -> Prox;
+    }
+    return NULL;
+}
+
+void LImprime(TipoLista Lista){ 
+  LTipoApontador Aux;
+  Aux = Lista.Primeiro -> Prox;
+  while (Aux != NULL) 
+    { printf("%d\n", Aux -> lItem.Chave);
+      Aux = Aux -> Prox;
+    }
+}

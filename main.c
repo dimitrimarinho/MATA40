@@ -10,6 +10,11 @@ int main(int argc, char **argv)
 
     TipopItem pitem;
   	TipoPilha pilha;
+
+    TipolItem litem;
+    TipoLista lista;
+    LTipoApontador p;
+
     int chave;
     int opc=0;
     menu:{
@@ -24,6 +29,54 @@ int main(int argc, char **argv)
   
     switch (opc){
 		case 1:
+		    FLVazia(&lista);
+
+		    opc = 6;
+		    while(opc != 0){
+
+		        printf("\n\n LISTA \n\n");
+		        printf("[1] Esvaziar Lista\n");
+		        printf("[2] Inserir Elemento na Lista\n");
+		        printf("[3] Remover Elemento da Lista de uma posicao (Remove o proximo)!\n");
+		        printf("[4] Verificar se a lista esta vazia:\n");
+		        printf("[5] Imprimir a lista\n");
+		        printf("[0] Voltar\n");
+		        scanf("%d",&opc);
+		    
+		        switch (opc){
+		        	case 0:
+		        		goto menu;
+	        		break;
+	        		
+		            case 1:
+		                FLVazia(&lista);
+		            break;
+
+		            case 2:
+		                scanf("%d", &chave);
+		                litem.Chave = chave;
+		                Insere(litem, &lista);
+		            break;
+
+		            case 3:
+		                scanf("%d", &chave);
+		                p = Busca(lista, chave);
+		                Retira(p, &lista, &litem);
+		            break;
+
+		            case 4:
+		                if (LVazia(lista))
+		                    printf("A lista está vazia\n");
+		                else
+		                    printf("A lista não está vazia\n");
+		            break;
+
+		            case 5:
+		                LImprime(lista);
+		            break;
+		        }
+		    }
+
 		break;
 
 		case 2:
