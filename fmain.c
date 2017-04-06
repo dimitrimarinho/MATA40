@@ -1,12 +1,12 @@
 #include <stdlib.h>
 #include <sys/time.h>
 #include <stdio.h>
-#include "library.c"
+#include "library.h"
 #define MAX 10
 
 
 int main(){
-    TipoItem item;
+    TipofItem item;
     TipoFila fila;
     int chave;
     
