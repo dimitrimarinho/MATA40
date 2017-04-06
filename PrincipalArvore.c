@@ -126,36 +126,15 @@ ARV Remove (ARV raiz, int x ){
 	}
 //Função para percorrer a árvore respeitando o critério EM ORDEM
 void inOrder (ARV raiz){
-	if (!Vazia(raiz)){
-		if((raiz->esq) != NULL){
-			inOrder(raiz->esq);
-			printf(" %d ", raiz->chave);
-		}
-		if((raiz->dir) != NULL)
-			inOrder(raiz->dir);
-	}
-}
-	//Função para percorrer a árvore respeitando o critério PRÉ ORDEM
-void preOrder (ARV raiz){
-	if (!Vazia(raiz)){
+	if ((raiz)==NULL)
+		return;
+	else{
+		inOrder(raiz->esq);
 		printf(" %d ", raiz->chave);
-		if((raiz->esq) != NULL)
-			preOrder(raiz->esq);
-		if((raiz->dir) != NULL)
-			preOrder(raiz->dir);
+		inOrder(raiz->dir);
 	}
+	
 }
-	//Função para percorrer a árvore respeitando o critério POS ORDEM
-void posOrder (ARV raiz){
-	if (!Vazia(raiz)){
-		if((raiz->esq) != NULL)
-			posOrder(raiz->esq);
-		if((raiz->dir) != NULL)
-			posOrder(raiz->dir);
-		printf(" %d ", raiz->chave);
-	}
-}
-
 int main(int argc, char **argv){
 	ARV arv=NULL;
 	int chave;
