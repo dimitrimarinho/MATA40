@@ -7,6 +7,9 @@ int main(int argc, char **argv)
 { 
     TipofItem item;
     TipoFila fila;
+
+    TipopItem pitem;
+  	TipoPilha pilha;
     int chave;
     int opc=0;
     menu:{
@@ -16,6 +19,7 @@ int main(int argc, char **argv)
 		printf("[3] Fila\n" );
 		printf("[4] Arvore de Binaria de Busca\n" );
 		scanf("%d",&opc);
+		printf("\e[1;1H\e[2J");
 	}
   
     switch (opc){
@@ -23,19 +27,65 @@ int main(int argc, char **argv)
 		break;
 
 		case 2:
-		break;
-		
-					
-	case 3:
+			FPVazia(&pilha);
 
-	    
-	    
-	    FFVazia(&fila);
+			opc = 6;
+
+			while(opc != 0){
+				printf("\n\nPILHA\n\n");
+				printf("[1] Esvaziar pilha \n");
+				printf("[2] Inserir Elemento na pilha \n");
+				printf("[3] Remover Elemento da pilha \n");
+				printf("[4] Verificar se a pilha esta vazia: \n");
+				printf("[5] Informa tamanho da pilha\n");
+				printf("[0] Voltar \n");
+				scanf("%d",&opc);
+				printf("\e[1;1H\e[2J");
+
+				switch (opc){
+
+					case 0:
+						goto menu;
+					break;
+
+				    case 1:
+				    	FPVazia(&pilha);
+				    break;
+
+				    case 2:
+				    	scanf("%d", &chave);
+				    	pitem.Chave = chave;
+				    	Empilha(pitem, &pilha);
+				    break;
+
+				    case 3:
+				    	Desempilha(&pilha, &pitem);
+				    	printf("Desempilhado: %d\n", pitem.Chave);
+
+				    break;
+
+				    case 4:
+				    	if (PVazia(pilha))
+				        	printf("Pilha Vazia\n");
+
+				      	else
+				        	printf("Pilha não vazia\n");
+				    break;
+
+				    case 5:
+				    	printf("Tamanho: %d\n", Tamanho(pilha));
+				    break;
+				}
+			}
+		break;
+						
+		case 3:
+	    	FFVazia(&fila);
 
 	   
-	    int opc = 6;
+	    	int opc = 6;
 
-	    while(opc != 0){
+	    	while(opc != 0){
 	        printf("\n\nFILA\n\n");
 	        printf("[1] Esvaziar fila \n");
 	        printf("[2] Inserir Elemento na fila \n");
@@ -44,6 +94,7 @@ int main(int argc, char **argv)
 	        printf("[5] Imprime a fila\n");
 	        printf("[0] Voltar \n");
 	        scanf("%d",&opc);
+	        printf("\e[1;1H\e[2J");
 
 	        switch (opc){
 	        	case 0:
@@ -77,9 +128,8 @@ int main(int argc, char **argv)
 	                Imprime(fila);
 	            break;
 	        }
-	    }
-
-	break;   
-return 0;
-}
+	    	}
+		break;
+	}
+	return 0;
 }
