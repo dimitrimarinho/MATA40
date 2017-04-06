@@ -53,7 +53,7 @@ void Pesquisa (ARV a , int b){
 		printf("Erro: Registro nao esta presente na arvore!!\n");
 		return ;
 	}else if ( a->chave == b ){
-			printf("Está na arvore");
+			printf("%d Está na arvore",b);
 		 	return ;
  		}else if ( b > a->chave ){
  				return Pesquisa (a->dir, b);
@@ -62,68 +62,61 @@ void Pesquisa (ARV a , int b){
 			}	
 } 
 
-//Funcao remover elemento da arvore
-void Antecessor(ARV raiz, ARV r){
-	
-	if(r->dir != NULL){
-		Antecessor(raiz,r->dir);
-		return;
-	}
-	raiz->chave = r->chave;
-	raiz = r;
-	r=r->esq;
-	free(raiz);
-}
-
+//Funçõa para remover um elemento da arvoe
 ARV Remove (ARV raiz, int x ){
 	ARV aux = raiz;
+	ARV q,r;
 		if (raiz==NULL){
 			printf("Erro : Elemento não esta na arvore!\n");
 			return NULL;
 		}
-		else if( aux->chave > x ){
-			Remove(aux->esq,x);
-			return NULL;
+		else if( x < aux->chave ){
+			aux->esq = Remove(aux->esq,x);
+			
 		}
-		else if( aux->chave < x){
-			Remove(aux->dir,x);
-			return NULL;
+		else if( x > aux->chave){
+			aux->dir = Remove(aux->dir,x);
+			
 		}
-		//nó sem filho
-		else if ( x == aux->chave ){ 
-				if(aux->esq == NULL && aux->dir==NULL)		
+		else {
+			if(aux->esq == NULL && aux->dir == NULL){	
 				free(aux);
 				aux=NULL;
-				printf ("OI 1\n");
+				printf ("Removido %d \n",x);
 			return aux;
 		}
-		
-		
+	
 		// no só com um filho a esquerda
-		else if (raiz->dir == NULL){
+		else if (aux->dir == NULL){
+			q=aux;
 			aux = aux->esq;
-			free(aux);
-			printf ("OII 2\n");
+			free(q);
+			printf ("Removido %d \n",x);
 		}
 		// no só com um filho a direita
-		else if (raiz->esq == NULL){
+		else if (aux->esq == NULL){
+			q=aux;
 			aux = aux->dir;
-			free(aux);
-			printf ("OIII 3\n");
-		} else { // no tem os dois filhos
-			aux = raiz->esq;
-			while(aux->dir !=NULL){
-				aux=aux->dir;
+			free(q);
+			printf ("Removido %d \n",x);
+		}
+	
+		 else { // no tem os dois filhos
+			r = aux->esq;
+			while(r->dir !=NULL){
+				r=r->dir;
 				}
-				raiz->chave = aux->chave;
-				aux->chave = x;
-				raiz->esq = Remove(raiz->esq, x);
-				printf ("OIII 4\n");
+				aux->chave = r->chave;
+				r->chave = x;
+				aux->esq = Remove(aux->esq, x);
+				printf ("Removido %d \n",x);
 			}
+		}
+			
 		
-			return raiz;
-		
+		return aux;
 	}
+	
 //Função para percorrer a árvore respeitando o critério EM ORDEM
 void inOrder (ARV raiz){
 	if ((raiz)==NULL)
@@ -135,6 +128,8 @@ void inOrder (ARV raiz){
 	}
 	
 }
+
+
 int main(int argc, char **argv){
 	ARV arv=NULL;
 	int chave;
@@ -142,12 +137,12 @@ int main(int argc, char **argv){
 	int opc = 6;
 	while(opc != 0){
 			opc=0;
-			printf("\nARVORE BINARIA\n\n");
+			printf("\n####### ARVORE BINARIA #######\n\n");
 			printf("1-Iniciar uma arvore \n");
-			printf("2-Pesquisar elemento na arvore\n ");
-			printf("3-Inserir elemento na arvore\n ");
-			printf("4-Remover elemento da arvore: \n");
-			printf("5-Imprimir arvore: \n");
+			printf("2-Pesquisar elemento na arvore \n");
+			printf("3-Inserir elemento na arvore \n");
+			printf("4-Remover elemento da arvore \n");
+			printf("5-Imprimir arvore (Em Ordem) \n");
 			printf("0-Sair \n");
 			scanf("%d",&opc);
 		switch (opc){
@@ -164,16 +159,13 @@ int main(int argc, char **argv){
 			break;
 			case 4:
 				scanf("%d",&chave);
-				Remove(arv,chave);
+				arv = Remove(arv,chave);
 				break;
 				
 			case 5:
 				printf("\nEm Ordem: ");
 				inOrder(arv);
-				printf("\nPre Ordem: ");
-				preOrder(arv);
-				printf("\nPos Ordem: ");
-				posOrder(arv);
+				
 			break;
 			}
 	}
