@@ -1,60 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
+#include "library.h"
 #define MAX 10
-
-typedef int TipoChave;
-
-typedef struct {
-  int Chave;
-  /* outros componentes */
-} TipopItem;
-
-typedef struct TipoCelula *TipoApontador;
-
-typedef struct TipoCelula {
-  TipopItem pItem;
-  TipoApontador Prox;
-} TipoCelula;
-
-typedef struct {
-  TipoApontador Fundo, Topo;
-  int Tamanho;
-} TipoPilha;
-
-void FPVazia(TipoPilha *Pilha){
-  Pilha->Topo = (TipoApontador) malloc(sizeof(TipoCelula));
-  Pilha->Fundo = Pilha->Topo;
-  Pilha->Topo->Prox = NULL;
-  Pilha->Tamanho = 0;
-} 
-
-int PVazia(TipoPilha Pilha){ 
-  return (Pilha.Topo == Pilha.Fundo);
-} 
-
-void Empilha(TipopItem x, TipoPilha *Pilha){
-  TipoApontador Aux;
-  Aux = (TipoApontador) malloc(sizeof(TipoCelula));
-  Pilha->Topo->pItem = x;
-  Aux->Prox = Pilha->Topo;
-  Pilha->Topo = Aux;
-  Pilha->Tamanho++;
-} 
-
-void Desempilha(TipoPilha *Pilha, TipopItem *pItem){
-  TipoApontador q;
-  if (PVazia(*Pilha)) { printf("Erro: lista vazia\n"); return; }
-  q = Pilha->Topo;
-  Pilha->Topo = q->Prox;
-  *pItem = q->Prox->pItem;
-  free(q);  Pilha->Tamanho--;
-} 
-
-int Tamanho(TipoPilha Pilha){
-  return (Pilha.Tamanho); 
-} 
-
 
 int main(){
   TipopItem pitem;
