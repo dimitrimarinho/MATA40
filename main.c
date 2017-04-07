@@ -15,6 +15,9 @@ int main(int argc, char **argv)
     TipoLista lista;
     LTipoApontador p;
 
+	ARV arv=NULL;
+    
+
     int chave;
     int opc=0;
     menu:{
@@ -76,7 +79,6 @@ int main(int argc, char **argv)
 		            break;
 		        }
 		    }
-
 		break;
 
 		case 2:
@@ -182,6 +184,45 @@ int main(int argc, char **argv)
 	            break;
 	        }
 	    	}
+		break;
+
+		case 4:
+			opc = 6;
+			while(opc != 0){
+				opc=0;
+				printf("\n\n ARVORE BINARIA \n\n");
+				printf("[1] Iniciar uma arvore \n");
+				printf("[2] Pesquisar elemento na arvore \n");
+				printf("[3] Inserir elemento na arvore \n");
+				printf("[4] Remover elemento da arvore \n");
+				printf("[5] Imprimir arvore (Em Ordem) \n");
+				printf("[0] Voltar \n");
+				scanf("%d",&opc);
+			switch (opc){
+				case 1:	
+					Inicializa(&arv);				
+				break;
+				case 2:			
+					scanf("%d",&chave);
+					Pesquisa(arv,chave);
+				break;
+				case 3:
+					scanf("%d",&chave);
+					insere(&arv,chave);
+				break;
+				case 4:
+					scanf("%d",&chave);
+					arv = Remove(arv,chave);
+					break;
+					
+				case 5:
+					printf("\nEm Ordem: ");
+					inOrder(arv);
+					
+				break;
+			}
+	}
+
 		break;
 	}
 	return 0;
